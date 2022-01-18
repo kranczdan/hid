@@ -9,17 +9,7 @@
     },
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "4.0"
-        }
-      }
-    }
+    "dataSources": {}
   },
   "sap.ui": {
     "technology": "UI5",
@@ -57,16 +47,11 @@
         }
       },
       "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true,
-          "groupId": "$direct"
-        }
-      }
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/insurances.json",
+				"preload": true
+			}
     },
     "resources": {
       "css": [
@@ -92,6 +77,27 @@
           "target": [
             "TargetApp"
           ]
+        },
+        {
+          "name": "Main",
+          "pattern": "",
+          "target": [
+            "Main"
+          ]
+        },
+        {
+          "name": "Detail",
+          "pattern": "detail/{id}",
+          "target": [
+            "Detail"
+          ]
+        },
+        {
+          "name": "Compare",
+          "pattern": "compare/{ids}",
+          "target": [
+            "Compare"
+          ]
         }
       ],
       "targets": {
@@ -101,6 +107,27 @@
           "clearControlAggregation": false,
           "viewId": "App",
           "viewName": "App"
+        },
+        "Main": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Main",
+          "viewName": "Main"
+        },
+        "Detail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Detail",
+          "viewName": "Detail"
+        },
+        "Compare": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Compare",
+          "viewName": "Compare"
         }
       }
     },
