@@ -11,22 +11,32 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("test.controller.Main", {
+            
             onInit: function () {
                 this.getOwnerComponent().getRouter().getRoute("Main").attachPatternMatched(this.onPatternMatched, this);
                 this.setContentDensity();
             },
 
-            onPatternMatched: function(){
-                this.getView().setModel(new JSONModel({
-                    itemsLength: this.getView().byId("idTable").getItems().length,
-                    compareEnabled: false,
-                    fBExpanded: true
-                }), "detail");
-
+            onAfterRendering: function(){
                 this.getView().setModel(new JSONModel({
                     keys: ["Vollkasko","Teilkasko"],
                     range: [0,500]
                 }), "filter");
+            },
+
+            onPatternMatched: function(){
+
+                let bCompare = false;
+
+                if(this.getView().byId("idTable").getSelectedContexts().length > 1){
+                    bCompare = true;
+                }
+
+                this.getView().setModel(new JSONModel({
+                    itemsLength: this.getView().byId("idTable").getItems().length,
+                    compareEnabled: bCompare,
+                    fBExpanded: false
+                }), "detail");
             },
 
             onTableSelectionChanged: function(oEvent){

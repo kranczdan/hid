@@ -81,7 +81,7 @@ sap.ui.define([
                     })
                 ];
                 aObjects.forEach((oObject) => {
-                    aCells.push(new sap.m.ObjectNumber({number: "" + oObject.pricePerMonth, unit: "€ / Monat"}));
+                    aCells.push(new sap.m.ObjectNumber({number: "" + oObject.pricePerMonth + ",00", unit: "€ / Monat"}));
                 });
                 oTable.addItem(new sap.m.ColumnListItem({
                     cells: aCells
@@ -95,7 +95,7 @@ sap.ui.define([
                     })
                 ];
                 aObjects.forEach((oObject) => {
-                    let oButton = new sap.m.Button({text: "Details"});
+                    let oButton = new sap.m.Button({text: "Weiter zu " + oObject.title, icon: "sap-icon://navigation-right-arrow", iconFirst: false});
                     oButton.addCustomData(new sap.ui.core.CustomData({key: "id", value: oObject.id}));
                     oButton.attachPress(this.onNavToDetail.bind(this));
                     aCells.push(oButton);

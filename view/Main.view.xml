@@ -87,7 +87,7 @@
                     <VBox items="{features}" class="sapUiTinyMarginTop sapUiTinyMarginBottom">
                         <Text text="⦁ {text}"/>
                     </VBox>
-					<ObjectNumber number="{path: 'pricePerMonth', type: 'sap.ui.model.type.Float'}" unit="€ / Monat"/>
+					<ObjectNumber number="{path: 'pricePerMonth', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}}" unit="€ / Monat"/>
 				</cells>
 			</ColumnListItem>
 		</items>

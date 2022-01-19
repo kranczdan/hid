@@ -10,7 +10,7 @@
 	<ObjectHeader
 		
 		title="{title}"
-		number="{pricePerMonth}"
+		number="{path: 'pricePerMonth', type: 'sap.ui.model.type.Float', formatOptions: {minFractionDigits: 2, maxFractionDigits: 2}}"
 		numberUnit="€ / Monat">
 	</ObjectHeader>
 		<IconTabBar expandable="false"
@@ -54,7 +54,7 @@
 				<Label text="Nachricht" />
 				<TextArea id="inpComment" value="{contact>/comment}" rows="5" required="true"/>
 				<Label/>
-				<Button text="Absenden" press="onPressed"/>
+				<Button text="Absenden" press="onPressed" type="Accept" icon="sap-icon://letter"/>
 			</f:content>
 		</f:SimpleForm>
 			</IconTabFilter>
